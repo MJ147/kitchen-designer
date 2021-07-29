@@ -1,3 +1,5 @@
-<div class="wall" [style.height.px]="height" [style.width.px]="width">
-	<app-cabinet></app-cabinet>
+<div class="wall" [style.width.px]="getScaledDim(width)" [style.height.px]="getScaledDim(height)">
+	<app-cabinet [height]="270"></app-cabinet>
+	<app-cabinet [height]="90"></app-cabinet>
+	<app-cabinet [height]="90"></app-cabinet>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DimensionsService } from 'src/app/services/dimensions.service';
 
 @Component({
 	selector: 'app-wall',
@@ -6,10 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./wall.component.less'],
 })
 export class WallComponent implements OnInit {
-	@Input() height: number = 0;
-	@Input() width: number = 0;
+	@Input() width: number = 450;
+	@Input() height: number = 270;
 
-	constructor() {}
+	border: number = 1;
+
+	constructor(private _ds: DimensionsService) {}
 
 	ngOnInit(): void {}
+
+	getScaledDim(dim: number): number {
+		return this._ds.getScaledDim(dim + this.border);
+	}
 }

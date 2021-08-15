@@ -1,5 +1,20 @@
 <div class="wall" [style.width.px]="getScaledDim(width)" [style.height.px]="getScaledDim(height)">
-	<app-cabinet [height]="270"></app-cabinet>
-	<app-cabinet [height]="90"></app-cabinet>
-	<app-cabinet [height]="90"></app-cabinet>
+    <app-cabinet [height]="270"></app-cabinet>
+	
+    <div class="cabinets-space">
+        <div class="cabinet-row">
+            <app-cabinet *ngFor="let cabinet of upperCabinets" [width]="cabinet.width" [height]="cabinet.height"></app-cabinet>
+        </div>
+        
+        <div class="backsplash"></div>
+
+        <!-- TODO: move to component -->
+        <div class="worktop"></div>
+
+        <div cdkDropList class="example-list" class="cabinet-row" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+            <app-cabinet class="example-box"  *ngFor="let cabinet of mainCabinets" [width]="cabinet.width" [height]="cabinet.height" cdkDrag>
+                <div class="example-custom-placeholder" *cdkDragPlaceholder></div>    
+            </app-cabinet>
+        </div>
+    </div>
 </div>

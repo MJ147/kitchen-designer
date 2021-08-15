@@ -1,5 +1,77 @@
+@import '../../../styles.less';
+
 .wall {
 	display: flex;
+	border: @main-border;
+	box-sizing: border-box;
 
-	border: 1px solid black;
+	.backsplash {
+		flex: 1;
+	}
+
+	// TODO: move to component?
+	.worktop {
+		height: 4px;
+		border: @main-border;
+		box-sizing: border-box;
+	}
+
+	.cabinets-space {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+
+		.cabinet-row {
+			display: flex;
+		}
+	}
+}
+
+.example-list {
+	height: 500px;
+	max-height: 100%;
+	border: solid 1px #ccc;
+	min-width: 60px;
+	display: inline-block;
+	background: white;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.example-box {
+	border-bottom: solid 1px #ccc;
+	color: rgba(0, 0, 0, 0.87);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	cursor: move;
+	background: white;
+	font-size: 14px;
+}
+
+.cdk-drag-preview {
+	box-sizing: border-box;
+	border-radius: 4px;
+	box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+	transition: transform 250ms cubic-bezier(0.2, 1, 0, 0);
+}
+
+.example-box:last-child {
+	border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+	transition: transform 250ms cubic-bezier(0.2, 1, 0, 0);
+}
+
+.example-custom-placeholder {
+	background: #ccc;
+	border: dotted 3px #999;
+	transition: transform 250ms cubic-bezier(0.2, 1, 0, 0);
+	width: 100%;
 }
